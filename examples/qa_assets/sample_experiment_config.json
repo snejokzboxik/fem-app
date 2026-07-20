@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "title": "QA sample experiment config",
+  "description": "Пример experiment_config.json для ручной проверки загрузки настроек.",
+  "workflow_mode": "Проверить локализацию",
+  "geometry_source": "Электроды функциями",
+  "geometry_config": {
+    "x_size_m": 0.001,
+    "y_size_m": 0.001,
+    "z_max_m": 0.0008,
+    "min_z_m": 2e-05,
+    "nx": 21,
+    "ny": 21,
+    "nz": 13,
+    "grid_mode_xy": "edge_aware",
+    "grid_mode_z": "near_surface_clustered",
+    "max_computational_mask_size": 160,
+    "source_kind": "function",
+    "function_definitions": [
+      {
+        "name": "RF left",
+        "expression": "abs(x + 250e-6) < 70e-6 and abs(y) < 280e-6",
+        "role": "RF",
+        "voltage": 0.0,
+        "rf_phase": 0.0
+      },
+      {
+        "name": "RF right",
+        "expression": "abs(x - 250e-6) < 70e-6 and abs(y) < 280e-6",
+        "role": "RF",
+        "voltage": 0.0,
+        "rf_phase": 0.0
+      },
+      {
+        "name": "RF top",
+        "expression": "abs(y - 250e-6) < 70e-6 and abs(x) < 280e-6",
+        "role": "RF",
+        "voltage": 0.0,
+        "rf_phase": 0.0
+      },
+      {
+        "name": "RF bottom",
+        "expression": "abs(y + 250e-6) < 70e-6 and abs(x) < 280e-6",
+        "role": "RF",
+        "voltage": 0.0,
+        "rf_phase": 0.0
+      }
+    ]
+  },
+  "electrode_assignments": [
+    {
+      "region_id": 1,
+      "name": "RF left",
+      "role": "RF",
+      "voltage": 0.0,
+      "rf_phase": 0.0
+    },
+    {
+      "region_id": 2,
+      "name": "RF right",
+      "role": "RF",
+      "voltage": 0.0,
+      "rf_phase": 0.0
+    },
+    {
+      "region_id": 3,
+      "name": "RF top",
+      "role": "RF",
+      "voltage": 0.0,
+      "rf_phase": 0.0
+    },
+    {
+      "region_id": 4,
+      "name": "RF bottom",
+      "role": "RF",
+      "voltage": 0.0,
+      "rf_phase": 0.0
+    }
+  ],
+  "rf_config": {
+    "use_time_dependent_voltage": true,
+    "rf_voltage": 20.0,
+    "rf_frequency_hz": 30000.0
+  },
+  "dc_config": {
+    "dc_voltage": 0.0,
+    "voltage_amplitude": 1.0
+  },
+  "particle_config": {
+    "particle_charge": 1e-16,
+    "particle_mass": 1e-18,
+    "particle_radius": 1e-06,
+    "particle_density": 2200.0
+  },
+  "environment_config": {
+    "mode_label": "Вакуум: трение выключено",
+    "regime": "vacuum",
+    "gamma_kg_s": 0.0
+  },
+  "dynamics_config": {
+    "initial_position": [
+      0.0,
+      0.0,
+      0.00012
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "simulation_time": [
+      0.0,
+      0.0015
+    ],
+    "time_step": 2e-06,
+    "max_time_step": 2e-06,
+    "confinement_radius_threshold": 0.00035
+  },
+  "field_grid_config": {},
+  "diagnostics_config": {
+    "expected_thing_to_look_at": "Посмотрите RF-null и псевдопотенциал."
+  },
+  "parameter_search_config": {
+    "sweep_voltages": "5,10,20",
+    "sweep_frequencies": "5000,30000,100000",
+    "max_simulations": 9
+  },
+  "notes": "Preset parameters are placeholders for numerical exploration."
+}

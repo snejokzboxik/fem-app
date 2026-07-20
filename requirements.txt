@@ -1,0 +1,8 @@
+numpy
+scipy
+matplotlib
+scikit-fem
+pytest
+streamlit
+streamlit-drawable-canvas
+Pillow
